@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import wp.psyTech.domain.User;
-import wp.psyTech.form.UserCredentials;
+import wp.psyTech.form.AuthentificationCredentials;
 import wp.psyTech.service.UserService;
 
 @Controller
@@ -22,14 +22,14 @@ public class LoginPage extends Page {
 
     @GetMapping({"/login"})
     public String loginGet(Model model) {
-        model.addAttribute("loginForm", new UserCredentials());
+        model.addAttribute("loginForm", new AuthentificationCredentials());
         return "LoginPage";
     }
 
 
     @PostMapping({"/login"})
     public String loginPost(
-            @Valid @ModelAttribute("loginForm") UserCredentials loginForm,
+            @Valid @ModelAttribute("loginForm") AuthentificationCredentials loginForm,
             BindingResult bindingResult,
             HttpSession httpSession) {
         if (bindingResult.hasErrors()) {

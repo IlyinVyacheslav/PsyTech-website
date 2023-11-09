@@ -25,7 +25,7 @@ public class UserCredentials {
 
     @NotNull
     @NotEmpty
-    @Pattern(regexp = "^[+7|8][0-9]{10}", message = "Incorrect phone number")
+    @Pattern(regexp = "^(\\+7|8)[0-9]{10}", message = "Incorrect phone number")
     private String phone;
 
     public String getPhone() {

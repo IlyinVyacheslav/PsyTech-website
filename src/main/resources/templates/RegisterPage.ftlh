@@ -1,14 +1,4 @@
 <#import "commons.ftlh" as c>
-<#import "/spring.ftl" as spring>
-
-<#macro error field>
-    <@spring.bind field/>
-    <#if spring.status.errorMessage??>
-        <div class="error">
-            ${spring.status.errorMessage}
-        </div>
-    </#if>
-</#macro>
 
 <@c.page>
     <div class="auth-form">
@@ -21,7 +11,7 @@
                 <div class="value">
                     <input id="login" name="login" value="${registerForm.login!}"/>
                 </div>
-                <@error "registerForm.login"/>
+                <@c.error "registerForm.login"/>
             </div>
             <div class="form-group">
                 <div class="name">
@@ -30,7 +20,7 @@
                 <div class="value">
                     <input type="email" id="register-email" name="email" value="${registerForm.email!}"/>
                 </div>
-                <@error "registerForm.email"/>
+                <@c.error "registerForm.email"/>
             </div>
             <div class="form-group">
                 <div class="name">
@@ -39,7 +29,7 @@
                 <div class="value">
                     <input type="password" id="register-password" name="password"/>
                 </div>
-                <@error "registerForm.password"/>
+                <@c.error "registerForm.password"/>
             </div>
             <div class="form-group">
                 <div class="name">
@@ -56,7 +46,7 @@
                 <div class="value">
                     <input type="tel" id="register-phone" name="phone" value="${registerForm.phone!}"/>
                 </div>
-                <@error "registerForm.phone"/>
+                <@c.error "registerForm.phone"/>
             </div>
             <div class="form-actions">
                 <button type="submit" class="btn register-btn">Register</button>

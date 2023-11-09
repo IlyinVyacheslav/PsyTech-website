@@ -1,6 +1,8 @@
 <#-- @ftlvariable name="message" type="java.lang.String" -->
 <#-- @ftlvariable name="user" type="wp.psyTech.domain.User" -->
 
+<#import "/spring.ftl" as spring>
+
 <#macro page>
 <!DOCTYPE html>
 
@@ -51,4 +53,13 @@
 </script>
 </body>
 </html>
+</#macro>
+
+<#macro error field>
+    <@spring.bind field/>
+    <#if spring.status.errorMessage??>
+        <div class="error">
+            ${spring.status.errorMessage}
+        </div>
+    </#if>
 </#macro>

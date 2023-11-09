@@ -2,22 +2,23 @@
 
 <@c.page>
     <div class="auth-form">
-        <form action="/login" method="post">
+        <form class="login-form" method="post" action="">
             <h2>Login</h2>
             <div class="form-group">
                 <div class="name">
-                    <label for="login-username">Username:</label>
+                    <label for="login">Username:</label>
                 </div>
                 <div class="value">
-                    <input type="text" id="login-username" name="username" required>
+                    <input id="login" name="login" value="${loginForm.login!}">
                 </div>
+                <@c.error "loginForm.login"/>
             </div>
             <div class="form-group">
                 <div class="name">
                     <label for="login-password">Password:</label>
                 </div>
                 <div class="value">
-                    <input type="password" id="login-password" name="password" required>
+                    <input type="password" id="login-password" name="password">
                 </div>
             </div>
             <div class="form-actions">

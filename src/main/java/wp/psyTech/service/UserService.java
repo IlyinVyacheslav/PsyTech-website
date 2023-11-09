@@ -2,6 +2,7 @@ package wp.psyTech.service;
 
 import org.springframework.stereotype.Service;
 import wp.psyTech.domain.User;
+import wp.psyTech.form.AuthentificationCredentials;
 import wp.psyTech.form.UserCredentials;
 import wp.psyTech.repository.UserRepository;
 
@@ -29,8 +30,9 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public User login(UserCredentials loginForm) {
+    public User login(AuthentificationCredentials loginForm) {
         User user = userRepository.getUserByLoginAndPassword(loginForm.getLogin(), loginForm.getPassword());
+        System.out.println("Log" + user.getLogin());
         return user;
     }
 }
