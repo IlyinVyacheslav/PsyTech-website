@@ -15,6 +15,7 @@
           <li><a href="#" @click.prevent="changePage('Materials')">Materials</a></li>
           <li><a href="#" @click.prevent="changePage('Partners')">For partners</a></li>
           <li v-if="user"><a href="#" @click.prevent="changePage('UserPage')">User's page</a></li>
+          <li v-if="user"><a href="#" @click.prevent="changePage('Write post')">Write post</a></li>
         </ul>
       </nav>
       <div class="auth-buttons">

@@ -10,15 +10,15 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    int countByLogin(String login);
+    int countByEmail(String email);
 
     @Transactional
     @Modifying
     @Query(value = "UPDATE user SET password_sha=SHA1(CONCAT('8960c201fb3136ef', ?2, ?3)) WHERE id=?1", nativeQuery = true)
-    void updatePasswordSha(long id, String login, String password);
+    void updatePasswordSha(long id, String email, String password);
 
-    @Query(value = "SELECT * FROM user WHERE login=?1 AND password_sha=SHA1(CONCAT('8960c201fb3136ef', ?1, ?2))", nativeQuery = true)
-    User findByLoginAndPassword(String login, String password);
+    @Query(value = "SELECT * FROM user WHERE email=?1 AND password_sha=SHA1(CONCAT('8960c201fb3136ef', ?1, ?2))", nativeQuery = true)
+    User findByEmailAndPassword(String email, String password);
 
     List<User> findAllByOrderByIdDesc();
 }

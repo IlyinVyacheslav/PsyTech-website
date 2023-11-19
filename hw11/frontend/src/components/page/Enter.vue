@@ -5,10 +5,10 @@
             <form @submit.prevent="onEnter">
                 <div class="field">
                     <div class="name">
-                        <label for="login">Login</label>
+                        <label for="email">Email</label>
                     </div>
                     <div class="value">
-                        <input autofocus id="login" name="login" v-model="login"/>
+                        <input autofocus id="email" name="email" v-model="email"/>
                     </div>
                 </div>
                 <div class="field">
@@ -33,14 +33,14 @@ export default {
     name: "Enter",
     data: function () {
         return {
-            login: "",
+            email: "",
             password: "",
             error: ""
         }
     },
     methods: {
         onEnter: function () {
-            this.$root.$emit("onEnter", this.login, this.password);
+            this.$root.$emit("onEnter", this.email, this.password);
         }
     },
     beforeCreate() {

@@ -36,7 +36,7 @@ public class JwtController {
             throw new ValidationException(bindingResult);
         }
 
-        User user = userService.findByLoginAndPassword(userCredentials.getLogin(), userCredentials.getPassword());
+        User user = userService.findByEmailAndPassword(userCredentials.getEmail(), userCredentials.getPassword());
         return jwtService.create(user);
     }
 }

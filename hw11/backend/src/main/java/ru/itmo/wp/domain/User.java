@@ -4,30 +4,34 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(indexes = {@Index(columnList = "creationTime"),
-@Index(columnList = "login", unique = true)})
+        @Index(columnList = "email", unique = true)})
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", nullable = false),
+//            inverseJoinColumns = @JoinColumn(name = "role_id", nullable = false))
+//    private Set<Role> roles;
+
+    @NotNull
     @NotEmpty
-    @Size(min = 2, max = 60)
+    @Pattern(regexp = "^[a-zA-Z0-9_-]+@[a-z]+\\.[a-z]{2,}$", message = "Incorrect email address")
+    private String email;
+
+    @NotBlank
+    @Size(min = 5, max = 30)
+    @Pattern(regexp = "^[a-zA-Zа-яА-Я\\s]+$", message = "Name should contain only latin letters")
     private String name;
-
-    @NotEmpty
-    @Size(min = 2, max = 24)
-    @Pattern(regexp = "[a-zA-Z]+")
-    private String login;
-
-    private boolean admin;
 
     @CreationTimestamp
     private Date creationTime;
@@ -45,28 +49,28 @@ public class User {
         this.id = id;
     }
 
+//    public Set<Role> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(Set<Role> roles) {
+//        this.roles = roles;
+//    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
     }
 
     public Date getCreationTime() {

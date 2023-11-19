@@ -1,7 +1,7 @@
 <template>
     <article>
         <div class="title">{{ post.title }}</div>
-        <div class="information">By {{ post.user.login }}, {{ post.creationTime }}</div>
+        <div class="information">By {{ post.user.name }}, {{ post.creationTime }}</div>
         <div class="body">{{ post.text }}</div>
         <div class="footer">
             <div class="right">

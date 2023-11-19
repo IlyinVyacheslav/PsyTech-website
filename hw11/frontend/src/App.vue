@@ -53,14 +53,14 @@ export default {
         this.updateAll()
     },
     beforeCreate() {
-        this.$root.$on("onEnter", (login, password) => {
+        this.$root.$on("onEnter", (email, password) => {
             if (password === "") {
                 this.$root.$emit("onEnterValidationError", "Password is required");
                 return;
             }
 
             axios.post("/api/1/jwt", {
-                login, password
+                email, password
             }).then(response => {
                 localStorage.setItem("jwt", response.data);
                 this.$root.$emit("onJwt", response.data);
@@ -69,9 +69,9 @@ export default {
             });
         });
 
-        this.$root.$on("onRegister", (login, name, password) => {
-            if (login === "") {
-                this.$root.$emit("onRegisterValidationError", "Login is required");
+        this.$root.$on("onRegister", (email, name, password, passwordConfirmation) => {
+            if (email === "") {
+                this.$root.$emit("onRegisterValidationError", "Email is required");
                 return;
             }
             if (name === "") {
@@ -82,9 +82,13 @@ export default {
                 this.$root.$emit("onRegisterValidationError", "Password is required");
                 return;
             }
+            if (passwordConfirmation === "") {
+              this.$root.$emit("onRegisterValidationError", "Password confirmation is required");
+              return;
+            }
 
             axios.post("/api/1/users/register", {
-                login, name, password
+                email, name, password, passwordConfirmation
             }).then(response => {
                 localStorage.setItem("jwt", response.data);
                 this.$root.$emit("onUpdateUsers");
