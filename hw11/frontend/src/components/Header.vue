@@ -9,12 +9,13 @@
       </div>
       <nav>
         <ul class="nav-menu">
-          <li><a href="#" @click.prevent="changePage('Psychologists')">For psychologists</a></li>
+          <li><a href="#" @click.prevent="changePage('PsychoRegister')">For psychologists</a></li>
           <li><a href="#" @click.prevent="changePage('Users')">Users</a></li>
           <li><a href="#" @click.prevent="changePage('Info')">Info</a></li>
           <li><a href="#" @click.prevent="changePage('Materials')">Materials</a></li>
           <li><a href="#" @click.prevent="changePage('Partners')">For partners</a></li>
           <li v-if="user"><a href="#" @click.prevent="changePage('UserPage')">User's page</a></li>
+          <li v-if="user"><a href="#" @click.prevent="changePage('Write post')">Write post</a></li>
         </ul>
       </nav>
       <div class="auth-buttons">

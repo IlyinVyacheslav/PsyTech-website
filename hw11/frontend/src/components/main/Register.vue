@@ -4,20 +4,20 @@
         <h2>Register</h2>
         <div class="form-group">
           <div class="name">
-            <label for="login">Username:</label>
+            <label for="email">Email:</label>
           </div>
           <div class="value">
-            <input id="login" name="login" v-model="login"/>
+            <input id="email" name="email" v-model="email"/>
           </div>
         </div>
-<!--        <div class="form-group">-->
-<!--          <div class="name">-->
-<!--            <label for="register-email">Email:</label>-->
-<!--          </div>-->
-<!--          <div class="value">-->
-<!--            <input type="email" id="register-email" name="email" v-model="email"/>-->
-<!--          </div>-->
-<!--        </div>-->
+        <div class="form-group">
+          <div class="name">
+            <label for="name">Name:</label>
+          </div>
+          <div class="value">
+            <input id="name" name="name" v-model="name"/>
+          </div>
+        </div>
         <div class="form-group">
           <div class="name">
             <label for="register-password">Password:</label>
@@ -26,22 +26,14 @@
             <input type="password" id="register-password" name="password" v-model="password"/>
           </div>
         </div>
-<!--        <div class="form-group">-->
-<!--          <div class="name">-->
-<!--            <label for="register-confirm-password">Confirm Password:</label>-->
-<!--          </div>-->
-<!--          <div class="value">-->
-<!--            <input type="password" id="register-confirm-password" name="confirm_password" v-model="confirm_password"/>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--          <div class="name">-->
-<!--            <label for="register-phone">Phone Number:</label>-->
-<!--          </div>-->
-<!--          <div class="value">-->
-<!--            <input type="tel" id="register-phone" name="phone" v-model="phone"/>-->
-<!--          </div>-->
-<!--        </div>-->
+        <div class="form-group">
+          <div class="name">
+            <label for="register-confirm-password">Confirm Password:</label>
+          </div>
+          <div class="value">
+            <input type="password" id="register-confirm-password" name="passwordConfirmation" v-model="passwordConfirmation"/>
+          </div>
+        </div>
         <div class="error">{{ error }}</div>
         <div class="form-actions">
           <button type="submit" class="btn register-btn">Register</button>
@@ -55,15 +47,16 @@ export default {
     name: "Register",
     data: function () {
         return {
-            login: "",
+            email: "",
             name: "",
             password: "",
+            passwordConfirmation: "",
             error: ""
         }
     },
     methods: {
         onRegister: function () {
-            this.$root.$emit("onRegister", this.login, this.name, this.password);
+            this.$root.$emit("onRegister", this.email, this.name, this.password, this.passwordConfirmation);
         }
     },
     beforeCreate() {

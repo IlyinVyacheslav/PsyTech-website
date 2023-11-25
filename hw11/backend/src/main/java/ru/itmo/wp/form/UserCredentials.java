@@ -1,32 +1,33 @@
 package ru.itmo.wp.form;
 
-import com.sun.istack.NotNull;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class UserCredentials {
 
-    @NotBlank
-    @Size(min = 2, max = 24)
-    @Pattern(regexp = "[a-zA-Z]+", message = "Expected letters A-Z or a-z")
-    private String login;
+    @NotNull
+    @NotEmpty
+    @Pattern(regexp = "^[a-zA-Z0-9_-]+@[a-z]+\\.[a-z]{2,}$", message = "Incorrect email address")
+    private String email;
 
-
-//    private String name;
+//    @NotBlank
+//    @Pattern(regexp = "[a-zA-Z\\s]{30}", message = "Name should contain only latin letters")
+    private String name;
 
     @NotBlank
     @Size(min = 3, max = 60)
     private String password;
 
-    public String getLogin() {
-        return login;
+//    @NotBlank
+//    @Size(min = 3, max = 60)
+    private String passwordConfirmation;
+
+
+    public String getEmail() {
+        return email;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -37,11 +38,19 @@ public class UserCredentials {
         this.password = password;
     }
 
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
+    public String getPasswordConfirmation() {
+        return passwordConfirmation;
+    }
+
+    public void setPasswordConfirmation(String passwordConfirmation) {
+        this.passwordConfirmation = passwordConfirmation;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

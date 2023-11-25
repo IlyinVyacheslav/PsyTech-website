@@ -1,5 +1,5 @@
 <template>
-    <div class="form">
+    <div class="auth-form">
         <div class="header">Write Post</div>
         <div class="body">
             <form @submit.prevent="onWritePost">

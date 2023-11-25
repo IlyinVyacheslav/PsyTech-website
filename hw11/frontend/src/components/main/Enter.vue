@@ -4,10 +4,10 @@
         <h2>Login</h2>
         <div class="form-group">
           <div class="name">
-            <label for="login">Username:</label>
+            <label for="email">Email:</label>
           </div>
           <div class="value">
-            <input id="login" name="login" v-model="login"/>
+            <input id="email" name="email" v-model="email"/>
           </div>
         </div>
         <div class="form-group">
@@ -58,14 +58,14 @@ export default {
     name: "Enter",
     data: function () {
         return {
-            login: "",
+            email: "",
             password: "",
             error: ""
         }
     },
     methods: {
         onEnter: function () {
-            this.$root.$emit("onEnter", this.login, this.password);
+            this.$root.$emit("onEnter", this.email, this.password);
         }
     },
     beforeCreate() {

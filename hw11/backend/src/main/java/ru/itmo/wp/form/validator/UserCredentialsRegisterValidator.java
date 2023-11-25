@@ -21,12 +21,11 @@ public class UserCredentialsRegisterValidator implements Validator {
     public void validate(Object target, Errors errors) {
         if (!errors.hasErrors()) {
             UserCredentials userCredentials = (UserCredentials) target;
-            if (userCredentials.getName().trim().length() < 2 || userCredentials.getName().trim().length() > 60) {
-                errors.rejectValue("name", "name.unexpected-size", "size must be from 2 to 60");
-                return;
+            if (!userCredentials.getPassword().equals(userCredentials.getPasswordConfirmation())) {
+                errors.rejectValue("password", "password.is-different", "passwords must be equal");
             }
-            if (!userService.isLoginVacant(userCredentials.getLogin())) {
-                errors.rejectValue("login", "login.is-in-use", "login is in use already");
+            if (!userService.isEmailVacant(userCredentials.getEmail())) {
+                errors.rejectValue("email", "email.is-in-use", "email is in use already");
             }
         }
     }
