@@ -82,7 +82,6 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             throw new ValidationException(bindingResult);
         }
-
         User existingUser = userService.findById(userId);
         if (existingUser == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");

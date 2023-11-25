@@ -7,6 +7,7 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.stereotype.Service;
+import ru.itmo.wp.domain.InterfaceUser;
 import ru.itmo.wp.domain.User;
 
 @Service
@@ -21,7 +22,7 @@ public class JwtService {
         this.userService = userService;
     }
 
-    public String create(User user) {
+    public String create(InterfaceUser user) {
         try {
             return JWT.create()
                     .withClaim("userId", user.getId())

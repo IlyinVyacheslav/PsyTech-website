@@ -2,13 +2,16 @@ package ru.itmo.wp.domain;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 @DiscriminatorValue("Client")
-public class Client extends User {
+public class Client extends AbstractUser {
     private int age;
     private Subscription subscription;
     private String info;
+    @Id
+    private Long id;
 
     public int getAge() {
         return age;
@@ -32,5 +35,15 @@ public class Client extends User {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    @Override
+    public long getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setId(long userId) {
+        this.id = userId;
     }
 }

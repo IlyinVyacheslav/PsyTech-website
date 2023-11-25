@@ -67,6 +67,8 @@ public class UserService {
     public Psychologist registerPsychologist(long userId, PsychologistCredentials psychologistCredentials) {
         Psychologist psychologist = new Psychologist();
         psychologist.setId(userId);
+//        psychologist.setName(findById(userId).getName());
+//        psychologist.setEmail(findById(userId).getEmail());
         psychologist.setAge(psychologistCredentials.getAge());
         psychologist.setExperience(psychologistCredentials.getExperience());
         psychologist.setDiplomaNumber(psychologistCredentials.getDiplomaNumber());

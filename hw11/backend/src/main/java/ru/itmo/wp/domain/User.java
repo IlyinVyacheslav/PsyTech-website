@@ -13,15 +13,17 @@ import java.util.List;
         @Index(columnList = "email", unique = true)})
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
-public class User {
+public class User extends AbstractUser{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @ManyToMany(fetch = FetchType.EAGER)
+    //    @ManyToMany(fetch = FetchType.EAGER)
 //    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", nullable = false),
 //            inverseJoinColumns = @JoinColumn(name = "role_id", nullable = false))
 //    private Set<Role> roles;
+    @Column(nullable = false)
+    private boolean admin = false;  // Добавлено новое поле с значением по умолчанию
 
     @NotNull
     @NotEmpty
@@ -41,12 +43,14 @@ public class User {
     @OrderBy("creationTime desc")
     private List<Post> posts;
 
+    @Override
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    @Override
+    public void setId(long userId) {
+        this.id = userId;
     }
 
 //    public Set<Role> getRoles() {
@@ -79,6 +83,14 @@ public class User {
 
     public void setCreationTime(Date creationTime) {
         this.creationTime = creationTime;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     public List<Post> getPosts() {

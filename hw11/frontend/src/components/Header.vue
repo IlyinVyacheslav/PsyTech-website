@@ -9,7 +9,7 @@
       </div>
       <nav>
         <ul class="nav-menu">
-          <li><a href="#" @click.prevent="changePage('Psychologists')">For psychologists</a></li>
+          <li><a href="#" @click.prevent="changePage('PsychoRegister')">For psychologists</a></li>
           <li><a href="#" @click.prevent="changePage('Users')">Users</a></li>
           <li><a href="#" @click.prevent="changePage('Info')">Info</a></li>
           <li><a href="#" @click.prevent="changePage('Materials')">Materials</a></li>

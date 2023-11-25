@@ -1,20 +1,19 @@
 package ru.itmo.wp.domain;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Index;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(indexes = {
         @Index(columnList = "diplomaNumber", unique = true)})
 @DiscriminatorValue("Psychologist")
-public class Psychologist extends User {
+public class Psychologist extends AbstractUser {
     private int age;
     private int experience;
     @NotNull
     private long diplomaNumber;
+    @Id
+    private Long id;
 
     public int getAge() {
         return age;
@@ -38,5 +37,15 @@ public class Psychologist extends User {
 
     public void setDiplomaNumber(long diplomaNumber) {
         this.diplomaNumber = diplomaNumber;
+    }
+
+    @Override
+    public long getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setId(long userId) {
+        this.id = userId;
     }
 }

@@ -1,10 +1,12 @@
 package ru.itmo.wp.form;
 
+import ru.itmo.wp.form.validator.ValidAge;
+
 import javax.validation.constraints.*;
 
+
 public class PsychologistCredentials {
-    @Min(value = 25, message = "Age must be at least 25")
-    @Max(value = 100)
+    @ValidAge
     @NotNull
     private int age;
 
@@ -20,7 +22,9 @@ public class PsychologistCredentials {
 
     public void setAge(int age) {
         this.age = age;
+        System.out.println("FFFFFFFFFFFFFFFFFFFF");
     }
+
 
     public int getExperience() {
         return experience;
