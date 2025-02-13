@@ -1,11 +1,11 @@
 <template>
-    <div class="users datatable" v-if="users" >
+    <div class="users datatable" v-if="users && users.length > 0" >
         <div class="caption">User</div>
         <table>
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Login</th>
+                <th>Email</th>
                 <th>Name</th>
             </tr>
             </thead>

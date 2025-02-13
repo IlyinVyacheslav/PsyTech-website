@@ -84,7 +84,7 @@ body {
 }
 .main-content {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: space-between;
 }
 .content-section {
@@ -157,6 +157,12 @@ body {
     margin-top: 5px;
     /*border: 1px solid #ccc;*/
     border-radius: 4px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.form-group .value input[type="radio"] {
+    margin-right: 5px;
 }
 
 .auth-form .error,
@@ -190,4 +196,8 @@ body {
 
 .register-btn {
     background-color: var(--link-hover-color);
+}
+
+.caption {
+    font-size: xx-large;
 }
